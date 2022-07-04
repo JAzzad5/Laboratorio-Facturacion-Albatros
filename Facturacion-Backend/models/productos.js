@@ -5,7 +5,7 @@ var esquema = new Schema(
         Codigo: Number,
         Descripcion: String,
         Precio: Number,
-        IdImpuesto:[{ type: Schema.Types.ObjectId, ref: 'impuestos' }]
+        IdImpuesto:{ type: Schema.Types.ObjectId, ref: 'impuestos' }
     }
 );
 

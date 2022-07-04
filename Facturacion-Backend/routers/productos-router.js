@@ -18,5 +18,23 @@ router.get('/', function( req, res ){
 });
 
 
+//Añadir producto
+router.post('/nuevo', function( req, res ){
+    productos.insertMany({
+        Codigo: req.body.codigo,
+        Descripcion: req.body.descripcion,
+        Precio: req.body.precio,
+        IdImpuesto:mongoose.Types.ObjectId(req.body.idImpuesto)
+    })
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
 
 module.exports = router;
