@@ -85,4 +85,15 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
+
+  eliminarProducto(id:any){
+
+    this.productosService.eliminarProducto(id).subscribe(
+      res=>{
+        console.log(res);
+        this.cargarProductos();
+      }
+    )
+
+  }
 }
