@@ -60,7 +60,14 @@ export class ClientesComponent implements OnInit {
 
   }
 
-  editar(){}
+  editar(){
+    this.clientesService.editarCliente(this.IdEditar,this.formularioCliente.value).subscribe(
+      res=>{
+        console.log(res);
+        this.cargarClientes();
+      }
+    )
+  }
 
   agregarCliente(){
     console.log(this.formularioCliente.value);
