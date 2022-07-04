@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 var esquema = new Schema(
     {
-        Porcentaje: Number
+        Porcentaje:Number,
     }
 );
 

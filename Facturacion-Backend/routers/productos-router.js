@@ -6,6 +6,7 @@ const productos = require('../models/productos');
 //Obtener productos
 router.get('/', function( req, res ){
     productos.find()
+    .populate({path:'IdImpuesto'})
     .then(result=>{
         res.send(result);
         res.end()
@@ -15,3 +16,7 @@ router.get('/', function( req, res ){
         res.end()
     })
 });
+
+
+
+module.exports = router;
