@@ -1,1 +1,40 @@
-<p>productos works!</p>
+<app-navbar></app-navbar>
+
+<div class="productos">
+    <div class="formulario">
+        <form [formGroup]="formularioProducto">
+            Descripcion Producto: <input class="form-control" formControlName="descripcion" type="text" placeholder="Nombre Producto" required><br>
+            Codigo: <input class="form-control" formControlName="codigo" type="number" placeholder="Imagen Producto"><br>
+            Impuesto: <input class="form-control" formControlName="idImpuesto" type="number" placeholder="Descripcion del Producto"><br>
+            Precio: <input min="10" class="form-control" formControlName="precio" type="number" placeholder="Precio (mayor que L. 10)"><br>
+
+        </form>
+        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12">Agregar Producto </button>
+    </div>
+</div>
+
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Impuesto</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of Productos">
+            <td class="ml-2">{{producto.Codigo}}</td>
+            <td>{{producto.Descripcion}}</td>
+            <td>L. {{producto.Precio}}</td>
+            <td>{{producto.IdImpuesto.Porcentaje}} (%)</td>
+
+            <td>
+                <a class="ml-1">Editar</a>
+                <a class="ml-1">Borrar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
