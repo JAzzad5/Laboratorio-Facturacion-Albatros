@@ -16,6 +16,19 @@ router.get('/', function( req, res ){
     })
 });
 
+//Obtener un cliente
+router.get('/:idCliente', function( req, res ){
+    clientes.find({_id: req.params.idCliente})
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
 //Añadir clientes
 router.post('/nuevo', function( req, res ){
     clientes.insertMany({

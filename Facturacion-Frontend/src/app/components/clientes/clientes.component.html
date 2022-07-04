@@ -1,2 +1,38 @@
 <app-navbar></app-navbar>
-<p>clientes works!</p>
+
+<div class="clientes">
+    <div class="formulario">
+        <form [formGroup]="formularioCliente">
+            Nombre Cliente: <input class="form-control" formControlName="nombre" type="text" placeholder="Nombre Cliente" required><br>
+            RTN: <input class="form-control" formControlName="rtn" type="text" placeholder="RTN"><br>
+            Direccion: <input min="10" class="form-control" formControlName="direccion" type="text" placeholder="Direccion"><br>
+
+        </form>
+        <button [disabled]="!formularioCliente.valid" (click)="agregarCliente();" type="button" type="button" class="btn btn-success col-12">Agregar Producto </button>
+        <button  [disabled]="!formularioCliente.valid" (click)="editar();" type="button" type="button" class=" mt-2 btn btn-warning col-12">Editar Producto </button>
+    </div>
+</div>
+
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Nombre</th>
+            <th scope="col">RTN</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of Clientes">
+            <td class="ml-2">{{cliente.Nombre}}</td>
+            <td>{{cliente.RTN}}</td>
+            <td>{{cliente.Direccion}}</td>
+
+            <td>
+                <a style="cursor:pointer" (click)="editarCliente(cliente._id);" class="ml-1">Editar</a>
+                <a style="cursor:pointer; color: red; " (click)="eliminarCliente(cliente._id);" class="ml-1">Borrar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from 'src/app/Services/productos.service';
 import {FormControl, FormGroup, Validators } from '@angular/forms';
-import { TitleStrategy } from '@angular/router';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
