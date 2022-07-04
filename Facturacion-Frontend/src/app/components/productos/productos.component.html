@@ -37,8 +37,8 @@
             <td>{{producto.IdImpuesto.Porcentaje}} (%)</td>
 
             <td>
-                <a (click)="editarProducto(producto._id);" class="ml-1">Editar</a>
-                <a (click)="eliminarProducto(producto._id);" class="ml-1">Borrar</a>
+                <a style="cursor:pointer" (click)="editarProducto(producto._id);" class="ml-1">Editar</a>
+                <a style="cursor:pointer; color: red; " (click)="eliminarProducto(producto._id);" class="ml-1">Borrar</a>
             </td>
         </tr>
     </tbody>
