@@ -3,13 +3,18 @@
 <div class="productos">
     <div class="formulario">
         <form [formGroup]="formularioProducto">
-            Descripcion Producto: <input class="form-control" formControlName="descripcion" type="text" placeholder="Nombre Producto" required><br>
-            Codigo: <input class="form-control" formControlName="codigo" type="number" placeholder="Imagen Producto"><br>
-            Impuesto: <input class="form-control" formControlName="idImpuesto" type="number" placeholder="Descripcion del Producto"><br>
-            Precio: <input min="10" class="form-control" formControlName="precio" type="number" placeholder="Precio (mayor que L. 10)"><br>
+            Descripcion Producto: <input class="form-control" formControlName="descripcion" type="text" placeholder="Descripcion Producto" required><br>
+            Codigo: <input class="form-control" formControlName="codigo" type="number" placeholder="Código del Producto"><br>
+            Impuesto:
+            <select formControlName="idImpuesto" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <option value="0">0</option>
+                <option *ngFor="let impuesto of Impuestos" [ngValue]="impuesto._id">{{impuesto.Porcentaje}}</option>
+            </select><br>
+            Precio: <input min="10" class="form-control" formControlName="precio" type="number" placeholder="Precio"><br>
 
         </form>
-        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12">Agregar Producto </button>
+        <button [disabled]="!formularioProducto.valid" (click)="agregarProducto();" type="button" type="button" class="btn btn-success col-12">Agregar Producto </button>
+        <button  [disabled]="!formularioProducto.valid" (click)="editar();" type="button" type="button" class=" mt-2 btn btn-warning col-12">Editar Producto </button>
     </div>
 </div>
 
@@ -32,7 +37,7 @@
             <td>{{producto.IdImpuesto.Porcentaje}} (%)</td>
 
             <td>
-                <a class="ml-1">Editar</a>
+                <a (click)="editarProducto(producto._id);" class="ml-1">Editar</a>
                 <a class="ml-1">Borrar</a>
             </td>
         </tr>

@@ -17,6 +17,20 @@ router.get('/', function( req, res ){
     })
 });
 
+//Obtener un producto
+router.get('/:idProducto', function( req, res ){
+    productos.find({_id: req.params.idProducto})
+    .populate({path:'IdImpuesto'})
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
 
 //Añadir producto
 router.post('/nuevo', function( req, res ){

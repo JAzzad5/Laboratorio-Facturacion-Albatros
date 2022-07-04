@@ -13,16 +13,24 @@ export class ProductosService {
     return this.httpClient.get(`http://localhost:8888/productos`,{});
   }
 
-  // nuevoProducto(idComercio:any, formularioProducto:any):Observable<any>{
-  //   return this.httpClient.post(`http://localhost:8888/productos/${idComercio}/nuevo`,formularioProducto);
-  // }
+  obtenerUnProducto(idProducto:any):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/productos/${idProducto}`,{});
+  }
 
-  // editarProducto(idProducto:any, formulario:any):Observable<any>{
-  //   return this.httpClient.put(`http://localhost:8888/productos/${idProducto}/editar`,formulario);
-  // }
+  obtenerImpuestos():Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/impuestos`,{});
+  }
 
-  // eliminarProducto(idProducto:any):Observable<any>{
-  //   return this.httpClient.delete(`http://localhost:8888/productos/${idProducto}/eliminar`,{});
-  // };
+  nuevoProducto(formularioProducto:any):Observable<any>{
+    return this.httpClient.post(`http://localhost:8888/productos/nuevo`,formularioProducto);
+  }
+
+  editarProducto(idProducto:any, formulario:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/productos/${idProducto}/editar`,formulario);
+  }
+
+  eliminarProducto(idProducto:any):Observable<any>{
+    return this.httpClient.delete(`http://localhost:8888/productos/${idProducto}/eliminar`,{});
+  };
 
 }
