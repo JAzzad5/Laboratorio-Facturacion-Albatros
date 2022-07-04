@@ -36,5 +36,42 @@ router.post('/nuevo', function( req, res ){
     })
 });
 
+//Actualizar productos
+router.put('/:idCliente/editar', function( req, res ){
+    productos.updateOne({
+        _id: req.params.idCliente
+    },{
+        $set:{
+            Codigo: req.body.codigo,
+            Descripcion: req.body.descripcion,
+            Precio: req.body.precio,
+            IdImpuesto:mongoose.Types.ObjectId(req.body.idImpuesto)
+        }
+    })
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
+//Eliminar productos
+router.delete('/:idProducto/eliminar', function( req, res ){
+    productos.deleteOne({
+            _id: req.params.idProducto
+        })
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
 
 module.exports = router;

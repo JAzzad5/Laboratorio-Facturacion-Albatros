@@ -36,6 +36,44 @@ router.post('/nuevo', function( req, res ){
         res.send(error);
         res.end()
     })
+
+    
+//Actualizar detail
+router.put('/:idDetail/:index/editar', function( req, res ){
+    facturaDetail.updateOne({
+        _id: req.params.idDetail,
+        "Items.$._id":req.params.index
+    },{
+        $set:{
+            "Items.$.Cantidad": req.body.cantidad,
+            "Items.$.TotalImpuesto":req.body.totalImpuesto,
+            "Items.$.TotalItem":req.body.totalItem,
+        }
+    })
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
+
+//Eliminar detail
+router.delete('/:idDetail/eliminar', function( req, res ){
+    facturaDetail.deleteOne({
+            _id: req.params.idDetail
+        })
+    .then(result=>{
+        res.send(result);
+        res.end()
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end()
+    })
+});
 });
 
 
